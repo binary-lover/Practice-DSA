@@ -1,5 +1,10 @@
 #include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
 int main(){
-    std::cout<<"hwlo"<<std::endl;
+    // string s= "123";
+    // int num = s[2]-'0';
+    // cout<<num;
+    cout<<2*false;
     return 0;
 }
