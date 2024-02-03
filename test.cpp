@@ -1,33 +1,47 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Solution {
-public:
-    int lengthOfLongestSubstring(string s) {
-        int max = 0;
-        vector<std::string> stringArray;
-        // stringArray.push_back("lu");
-        for (int i = 0; i < s.length(); i++)
+
+class Solution
+{
+    public:
+    //Function to find a continuous sub-array which adds up to a given number.
+    vector<int> subarraySum(vector<int>arr, int n, long long s)
+    {
+        long long sum = 0;
+        int start = 0;
+        for (int i = 0; i < n; i++)
         {
-            stringArray.push_back(to_string(s[i]));
-            int temp = stringArray[0];
-            // if (temp==stringArray[i]){
-            //     stringArray.erase(stringArray.begin());
-            // }
-            max++;
-        }
-        
-        for (int j = 0; j < stringArray.size(); j++)
-        {
-            cout<<stringArray[j]<<endl;
+            sum+=arr[i];
+            if (sum>s )
+            {
+                // sum-=arr[start];
+                // start++;
+                while (sum>s && i > start)
+                {
+                    sum-=arr[start];
+                    start++;
+                }
+                
+            }
+            if (sum==s)
+            {
+                return {start+1,i+1};
+            }
             
         }
-        return max;
+        return {-1};
         
     }
 };
-int main(){
+int main()
+{
     Solution s;
-    cout<<s.lengthOfLongestSubstring("abcabcbb");
+    vector<int> arr = {1, 2, 3, 4, 5,2,0,10,10,10};
+    vector<int> result = s.subarraySum(arr, 10, 30);
+    for (int i = 0; i < result.size(); i++)
+    {
+        cout << result[i] << " ";
+    }
+
     return 0;
 }
-
