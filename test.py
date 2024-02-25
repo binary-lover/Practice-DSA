@@ -1,14 +1,19 @@
 import random
+import time
+string = "Hello World"
+string2 = ""
 
-# Set the size of the list
-list_size = 30000
+index = 0
+while True:
+    if string == string2:
+        break;
+    randomString = chr(random.randrange(31,123))
+    if randomString == string[index]: 
+        string2+=randomString
+        index+=1
+    print(string2,end="")
+    print(randomString if randomString.isalpha() else "")
+    # print()
+    time.sleep(0.005)
 
-# Generate a list of 1000 random elements with some repetition
-random_elements = [random.randrange(-100, 100) for _ in range(list_size)]
 
-# Print the first 20 elements as an example
-print(sorted(random_elements))
-print(len(random_elements))
-
-
-print(len(li))
