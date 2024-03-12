@@ -1,29 +1,41 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-int main()
+
+class Node
 {
-    int arr[] = {2, 2, 3, 2, 4, 5, 3, 4, 5, 2, 3, 2, 5};
-    int n = sizeof(arr) / sizeof(arr[0]);
+public:
+    int val;
+    Node* next;
 
-    int jumps = 0, currend = 0, maxrange = 0;
+    Node(int data){
+        val = data;
+        next = NULL;
+    };
     
-    for (int i = 0; i < n; i++)
+};
+
+void insertAtHead(Node* &head, int val){
+    Node * newNode = new Node(val);
+    newNode->next = head;
+    head = newNode;
+}
+
+void dispaly(Node * head){
+    Node* temp = head;
+    while (temp!=NULL)
     {
-        // currfar = max();
-        for (int j = currend; j <= arr[i + currend]; j++)
-        {
-            maxrange = max(maxrange, arr[j]);
-        }
-
-        if (i == currend)
-        {
-            jumps++;
-            currend = maxrange;
-        }
-
-        cout << maxrange << endl;
+        cout<<temp->val<<"->";
+        temp = temp->next;
     }
-    cout << endl
-         << jumps;
+    cout<<"NULL\n";
+    
+}
+
+int main(){
+    Node* head = NULL;
+    insertAtHead(head,4);
+    insertAtHead(head,34);
+    dispaly(head);
+    
     return 0;
 }

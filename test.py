@@ -1,19 +1,38 @@
-import random
-import time
-string = "Hello World"
-string2 = ""
+# Python program to test 
+# internet speed 
 
-index = 0
-while True:
-    if string == string2:
-        break;
-    randomString = chr(random.randrange(31,123))
-    if randomString == string[index]: 
-        string2+=randomString
-        index+=1
-    print(string2,end="")
-    print(randomString if randomString.isalpha() else "")
-    # print()
-    time.sleep(0.005)
+import speedtest 
 
 
+st = speedtest.Speedtest() 
+
+option = int(input('''What speed do you want to test: 
+
+1) Download Speed 
+
+2) Upload Speed 
+
+3) Ping 
+
+Your Choice: ''')) 
+
+
+if option == 1: 
+
+	print((st.download()/8)) 
+
+elif option == 2: 
+
+	print(st.upload()) 
+
+elif option == 3: 
+
+	servernames =[] 
+
+	st.get_servers(servernames) 
+
+	print(st.results.ping) 
+
+else: 
+
+	print("Please enter the correct choice !") 
