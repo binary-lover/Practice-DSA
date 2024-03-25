@@ -92,6 +92,31 @@ void dispaly(Node * head){
     
 }
 
+void deleteAltElem(Node * &head){
+    Node * temp = head;
+    while (temp !=NULL && temp->next!=NULL && temp->next->next!=NULL)
+    {
+        // cout<<temp->val<<" "<<temp->next->val<<" "<<temp->next->next->val<<endl;
+        temp->next = temp->next->next;
+        temp = temp->next;
+        cout<<temp->val<<endl;
+
+        if (temp->next==NULL)
+        {
+            break;
+        }
+        else if (temp->next->next==NULL)
+        {
+            temp->next = NULL;   
+        }
+        
+        
+        // dispaly(head);
+    }
+    
+}
+
+
 int main(){
     Node* head = NULL;
     insertAtHead(head,1);
@@ -100,19 +125,22 @@ int main(){
     insertAtHead(head,4);
     insertAtHead(head,5);
     insertAtHead(head,6);
+    insertAtHead(head,7);
+    // insertAtHead(head,7); 
     // insertAtTail(head,2);
     // insertAtTail(head,3);
     // dispaly(head);
-    insertAtPosition(head,7,3);
+    // insertAtPosition(head,7,3);
     // dispaly(head);
-    updateAtPos(head, 99, 2);
-    dispaly(head);
+    // updateAtPos(head, 99, 2);
+    // dispaly(head);
     // deleteAdHead(head);
     // dispaly(head);
 
-    deleteAtTail(head);
+    // deleteAtTail(head);
     dispaly(head);
-    
+    deleteAltElem(head);
+    dispaly(head);
     
     return 0;
 }

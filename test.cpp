@@ -1,41 +1,30 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-class Node
-{
-public:
-    int val;
-    Node* next;
+class Number {
+private:
+    int num;
 
-    Node(int data){
-        val = data;
-        next = NULL;
-    };
-    
+public:
+    // Constructor
+    Number(int n) {
+        num = n;
+    }
+
+    // Member function that takes an object of the same class and another value
+    void addValue( int value) {
+        int result = num + value;
+        cout << "Sum of " << num << " and " << value << " is: " << result << endl;
+    }
 };
 
-void insertAtHead(Node* &head, int val){
-    Node * newNode = new Node(val);
-    newNode->next = head;
-    head = newNode;
-}
+int main() {
+    // Creating two objects of the Number class
+    Number num1(5);
+    Number num2(10);
 
-void dispaly(Node * head){
-    Node* temp = head;
-    while (temp!=NULL)
-    {
-        cout<<temp->val<<"->";
-        temp = temp->next;
-    }
-    cout<<"NULL\n";
-    
-}
+    // Calling the member function addValue() with an object and a value
+    num2.addValue(7);
 
-int main(){
-    Node* head = NULL;
-    insertAtHead(head,4);
-    insertAtHead(head,34);
-    dispaly(head);
-    
     return 0;
 }
