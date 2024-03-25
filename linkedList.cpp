@@ -20,6 +20,12 @@ void insertAtHead(Node* &head, int val){
     head = newNode;
 }
 
+void deleteAdHead(Node* &head){
+    Node* temp = head;
+    head = head->next;
+    free(temp);
+}
+
 void insertAtTail(Node* &head, int val){
     Node * new_node = new Node(val);
 
@@ -31,6 +37,15 @@ void insertAtTail(Node* &head, int val){
 
     temp->next = new_node;  
     
+}
+
+void deleteAtTail(Node* &head){
+    Node* temp = head;
+    while(temp->next->next != NULL){
+        temp = temp->next;
+    }
+    free(temp->next->next);
+    temp->next=NULL;
 }
 
 void insertAtPosition(Node * &head, int val, int pos){
@@ -87,10 +102,15 @@ int main(){
     insertAtHead(head,6);
     // insertAtTail(head,2);
     // insertAtTail(head,3);
-    dispaly(head);
+    // dispaly(head);
     insertAtPosition(head,7,3);
-    dispaly(head);
+    // dispaly(head);
     updateAtPos(head, 99, 2);
+    dispaly(head);
+    // deleteAdHead(head);
+    // dispaly(head);
+
+    deleteAtTail(head);
     dispaly(head);
     
     
