@@ -20,11 +20,13 @@ public:
 
 int main() {
     // Creating two objects of the Number class
-    Number num1(5);
-    Number num2(10);
+    // Number num1(5);
+    // Number num2(10);
 
-    // Calling the member function addValue() with an object and a value
-    num2.addValue(7);
+    // // Calling the member function addValue() with an object and a value
+    // num2.addValue(7);
+    bool name = true;
+    cout<<name;
 
     return 0;
 }
