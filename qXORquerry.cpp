@@ -13,21 +13,23 @@ public:
     vector<int> constructList(int q, vector<vector<int>> &queries)
     {
         vector<int> s = {0};
+        int tempwise = 0;
         for (int i = 0; i < q; i++)
         {
             if (queries[i][0] == 0)
             {
-                s.push_back(queries[i][1]);
+                s.push_back(queries[i][1] ^ tempwise);
             }
             else if (queries[i][0] == 1)
             {
-                for (int j = 0; j < s.size(); j++)
-                {
-                    s[j]^= queries[i][1];
-                    
-                }
+                tempwise ^= queries[i][1];
             }
         }
+        for (int i = 0; i < s.size(); i++)
+        {
+            s[i] ^= tempwise;
+        }
+
         sort(s.begin(), s.end());
         return s;
     }
