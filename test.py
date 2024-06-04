@@ -1,38 +1,8 @@
-# Python program to test 
-# internet speed 
-
-import speedtest 
-
-
-st = speedtest.Speedtest() 
-
-option = int(input('''What speed do you want to test: 
-
-1) Download Speed 
-
-2) Upload Speed 
-
-3) Ping 
-
-Your Choice: ''')) 
-
-
-if option == 1: 
-
-	print((st.download()/8)) 
-
-elif option == 2: 
-
-	print(st.upload()) 
-
-elif option == 3: 
-
-	servernames =[] 
-
-	st.get_servers(servernames) 
-
-	print(st.results.ping) 
-
-else: 
-
-	print("Please enter the correct choice !") 
+class Solution:
+	def binaryNextNumber(self, s):
+		binary = bin(int(s, 2)+1)[2:]
+		return binary
+	
+if __name__ == '__main__':
+	s = Solution()
+	print(s.binaryNextNumber("1010"))
