@@ -2,8 +2,7 @@
 using namespace std;
 
 int main(){
-    vector<pair<char, int>> vecotrone;
-    vecotrone.push_back({'a', 4});
+    cout<<(7/3);
 
     return 0;
 }
