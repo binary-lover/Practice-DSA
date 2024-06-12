@@ -24,7 +24,6 @@ class Solution {
     }
 };
 
-
 int main(){
     Solution s;
     int count = s.countNumberswith4(444);
