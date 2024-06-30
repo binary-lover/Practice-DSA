@@ -62,7 +62,7 @@ int main(){
     head->next->next->next->prev = head->next->next;
     head->next->next->next->next = new Node(50);
     head->next->next->next->next->prev = head->next->next->next;
-    int x = 20;
+    int x = 2;
     head = ob.deleteNode(head, x);
     while(head){
         cout << head->data << " ";
