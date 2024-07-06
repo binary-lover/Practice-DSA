@@ -34,7 +34,6 @@ clss Solution{
             freq[max_key] = 0;
         }
 
-        
         return res;
     }
 };
