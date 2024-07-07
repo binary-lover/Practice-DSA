@@ -1,52 +1,35 @@
-/*
-Given a non-empty array nums[] of integers of length N, find the top k elements which have the highest frequency in the array. If two numbers have same frequencies, then the larger number should be given more preference.
-
-*/
 #include <bits/stdc++.h>
 using namespace std;
 
-clss Solution{
-      public:
-    vector<int> topK(vector<int>& nums, int k) {
-        int n = nums.size();
-        if(n==k){
-            return nums;
-        }
-        unordered_map<int, int> freq;
-        for(int i=0; i<n; i++){
-            freq[nums[i]]++;
-        }
-        // If two numbers have same frequencies, then the larger number should be given more preference.
-        vector<int> res;
-
-        // finding top k elements
-        // approach: use loop to find max k elements
-        for(int i=0; i<k; i++){
-            int max = 0;
-            int max_key = 0;
-            for(auto j: freq){
-                if(j.second > max){
-                    max = j.second;
-                    max_key = j.first;
-                }
+class Solution {
+public:
+    int Countpair(int arr[], int n, int sum){
+        int count = 0;
+        int i = 0, j = n-1;
+        while(i<j){
+            cout<<i<<" "<<j<<endl;
+            if(arr[i]+arr[j]==sum){
+                // return {i+1,j+1};
+                count++;
+                i++;
             }
-            res.push_back(max_key);
-            freq[max_key] = 0;
+            else if(arr[i]+arr[j]<sum){
+                i++;
+            }
+            else{
+                j--;
+            }
         }
-
-        return res;
+        return count;
+    
     }
 };
 
 int main(){
-    Solution obj;
-    vector<int> nums = {1, 1, 1, 2, 2, 3};
-    int k = 2;
-    vector<int> res = obj.topK(nums, k);
-    for(auto i: res){
-        cout << i << " ";
-    }
-    cout << endl;
-
+    Solution s;
+    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int sum = 7;
+    cout<<s.Countpair(arr, n, sum);
     return 0;
-}   
+}
