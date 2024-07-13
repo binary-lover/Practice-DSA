@@ -1,3 +1,8 @@
+// Triplet Sum in Array
+
+
+// Given an array arr of size n and an integer x. Find if there's a triplet in the array which sums up to the given integer x.
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,7 +14,7 @@ class Solution
             return false;
         }
 
-        
+
 
         sort(arr, arr+n);
         for(int i = 0; i < n-2; i++){
