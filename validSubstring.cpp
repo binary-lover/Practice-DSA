@@ -1,42 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
-  public:
-    int findMaxLen(string s) {
-        stack<char> stak;
-        int maximum = 0;
-        int temp = 0;
-        for(int i = 0; i < s.size(); i++){
-            if(!stak.empty() && s[i]==')' && stak.top() == '('){
-                stak.pop();
-                temp+=2;
-                // maximum+=2;
-                cout<<temp<<" i: "<<i<<endl;
-        
-            } 
-            else if(!stak.empty() && s[i]==')' && stak.top() == ')'){
-                stak.push(s[i]);
-                maximum = max(maximum,temp);
-                temp = 0;
+class Solution
+{
+public:
+    int findMaxLen(string s)
+    {
+
+        int n = s.size();
+        stack<int> st;
+        int ans = 0;
+        for (int i = 0; i < n; i++)
+        {
+            char ch = s[i];
+            if (st.empty() || ch == '(' || s[st.top()] == ')')
+            {
+                st.push(i);
             }
-            else if(s[i] == ')'){
-                // Handle the case when stack is empty
-                temp = 0;
+            else
+            {
+                st.pop();
             }
-            else{
-                stak.push(s[i]);
-                maximum = max(maximum,temp);
+            if (st.empty())
+            {
+                ans = max(ans, i + 1);
+            }
+            else
+
+            {
+                ans = max(ans, i - st.top());
             }
         }
-        // cout<<"Size: "<<stak.size()<<endl;
-        maximum = max(maximum,temp);
-        return maximum;
+        return ans;
     }
 };
-int main(){
+int main()
+{
     Solution obj;
     string s = "(((()";
-    cout<<obj.findMaxLen(s)<<endl;
+    cout << obj.findMaxLen(s) << endl;
     return 0;
 }
