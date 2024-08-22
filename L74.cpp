@@ -13,25 +13,7 @@ using namespace std;
 
 class Solution {
 public:
-    int binarySearch(vector<int>& arr,int k){
-        int left = 0;
-        int right = arr.size() -1;
-
-        while(left <= right){
-            int mid = left + (right - left)/2;
-            if(k==arr[mid]){
-                return 1;
-            }
-            else if (k > arr[mid]){
-                left = mid + 1;
-            }
-            else{
-                right = mid - 1;
-            }
-        }
-
-        return 0;
-    }
+     // O(log(m*n)) time complexity
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
         int left = 0;
         int right = matrix.size()-1;
@@ -41,10 +23,26 @@ public:
             // find the row in which element may exist by comparing the target with the first element of each row
             if(target >= matrix[mid][0] && target <= matrix[mid][matrix[mid].size()-1]){ 
                 // if target is in the row, then search the target in the row
-                if(target == matrix[mid][0] || target == matrix[mid][matrix[mid].size()-1]){ // if target is the first or last element of the row, then return 1
-                    return 1;
+                cout<<mid<<endl;
+                int left1 = 0;
+                int right1 = matrix[mid].size()-1;
+                while(left1<=right1){
+                    int mid1 = left1 + (right1 - left1)/2;
+                    cout<<"mid1: "<<mid1<<endl;
+                    if(target == matrix[mid][mid1]){
+                        return 1;
+                    }
+                    else if(target > matrix[mid][mid1]){
+                        left1 = mid1 + 1;
+                    }
+                    else{
+                        right1 = mid1 - 1;
+                    }
                 }
-                return binarySearch(matrix[mid], target);
+                // if target is not found then check in the next row
+                target > matrix[mid][matrix[mid].size()-1] ? left = mid + 1 : right = mid - 1;
+                
+
             }
             else if(target > matrix[mid][matrix[mid].size()-1]){ // if target is greater than the last element of the row, then search in the next row
                 left = mid + 1;
@@ -56,12 +54,40 @@ public:
         }
         return 0;
     }
+
+    // another approach with O(m*log(n)) time complexity
+    // bool searchMatrix(vector<vector<int>>& matrix, int target) {
+    //     // cheking each row if the target may exist in the row
+    //     for(int i=0; i<matrix.size(); i++){
+    //         if(target >= matrix[i][0] && target <= matrix[i][matrix[i].size()-1]){
+    //             // if target may exist in the row, then search the target in the row
+    //             int left = 0;
+    //             int right = matrix[i].size()-1;
+    //             while(left<=right){
+    //                 int mid = left + (right - left)/2;
+    //                 if(target == matrix[i][mid]){
+    //                     return 1;
+    //                 }
+    //                 else if(target > matrix[i][mid]){
+    //                     left = mid + 1;
+    //                 }
+    //                 else{
+    //                     right = mid - 1;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return 0;
+    // }
 };
 
 int main(){
     Solution s;
-    vector<vector<int>> matrix = {{1,3,5,7},{10,11,16,20},{23,30,34,60}};
-    int target = 5;
+        vector<vector<int>> matrix = {{10, 20, 30, 40},
+                                  {15, 25, 35, 45},
+                                  {27, 29, 37, 48},
+                                  {32, 33, 39, 50}};
+    int target = 37;
     cout << s.searchMatrix(matrix, target) << endl;
     
     return 0;
