@@ -19,7 +19,7 @@ public:
                 left = mid + 1;
             }
             else{
-                right = mid;
+                right = mid - 1;
             }
         }
 
